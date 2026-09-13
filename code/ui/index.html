@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy or Wait? — Personal Finance Decision Center</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bank-layout">
+    <!-- Persistent Left Sidebar -->
+    <aside class="bank-sidebar" aria-label="Main Navigation">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Buy or Wait?</div>
+          <div class="brand-subtitle">Personal Finance</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="nav-link active" id="nav-overview" onclick="handleNavClick('overview')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Overview</span>
+        </button>
+        <button class="nav-link" id="nav-decisions" onclick="handleNavClick('decisions')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Purchase Decisions</span>
+        </button>
+        <button class="nav-link" id="nav-plans" onclick="handleNavClick('plans')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Payment Plans</span>
+        </button>
+        <button class="nav-link" id="nav-activity" onclick="handleNavClick('activity')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>Financial Activity</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="engine-indicator">
+          <div class="engine-title">Decision Engine</div>
+          <div class="engine-caption">90-day liquidity protection</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="bank-main-wrap">
+      <!-- Top Header Bar (~72px high) -->
+      <header class="bank-header">
+        <div class="header-left">
+          <div class="header-brand-title">Buy or Wait?</div>
+          <div class="header-brand-sub">Personal Finance Decision Center</div>
+        </div>
+
+        <div class="header-center">
+          <div class="mode-tabs" role="tablist">
+            <button class="mode-tab active" id="tab-eval" role="tab" aria-selected="true" onclick="switchTab('EVALUATION')">
+              My Decisions <span class="tab-badge" id="tab-eval-count">250</span>
+            </button>
+            <button class="mode-tab" id="tab-sample" role="tab" aria-selected="false" onclick="switchTab('SAMPLE')">
+              Demo Scenarios <span class="tab-badge" id="tab-sample-count">25</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Notification Dropdown Container -->
+          <div class="notification-wrap">
+            <button class="notification-btn" id="notif-toggle-btn" aria-label="Notifications" aria-expanded="false" onclick="toggleNotifications(event)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notif-dot"></span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="notification-dropdown" id="notif-dropdown" role="region" aria-label="Notifications Panel">
+              <div class="notif-header">Notifications</div>
+              <div class="notif-item">
+                <div class="notif-item-title">Financial analysis completed</div>
+                <div class="notif-item-sub">250 requests evaluated</div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-item-title">Output validation passed</div>
+                <div class="notif-item-sub">All evaluation rows verified</div>
+              </div>
+              <div class="notif-item notif-empty">
+                <div class="notif-item-sub">No new notifications</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Area with Interactive Dropdown -->
+          <div class="profile-wrap">
+            <button class="profile-pill-btn" id="profile-toggle-btn" aria-label="Demo Account Profile Menu" aria-haspopup="menu" aria-expanded="false" onclick="toggleProfile(event)">
+              <div class="profile-avatar">DA</div>
+              <span class="profile-name">Demo Account</span>
+              <svg class="profile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Profile Dropdown Menu -->
+            <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="Profile Menu">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar">DA</div>
+                <div class="dropdown-user-info">
+                  <div class="dropdown-user-name">Demo Account</div>
+                  <div class="dropdown-user-env">Demo profile</div>
+                </div>
+              </div>
+
+              <div class="profile-menu-items">
+                <button class="profile-menu-item" role="menuitem" onclick="handleProfileMenu('overview')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                  <span>Account Overview</span>
+                </button>
+                <button class="profile-menu-item" role="menuitem" onclick="handleProfileMenu('decisions')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Decision History</span>
+                </button>
+                <button class="profile-menu-item" role="menuitem" onclick="handleProfileMenu('preferences')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                  <span>Preferences</span>
+                </button>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="profile-dropdown-footer">
+                <div class="footer-system-label">Demo Environment</div>
+                <div class="footer-system-sub">Financial data: Dataset</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Global Toast Container for Demo Notices -->
+      <div class="demo-toast" id="demo-toast" role="status" aria-live="polite"></div>
+
+      <!-- Scrollable Main View -->
+      <main class="main-body">
+        <!-- Top Section: Financial Overview (Clean 4-column summary + subtle total) -->
+        <section class="overview-strip" id="section-overview">
+          <div class="overview-header-row">
+            <div>
+              <h1 class="overview-heading">Financial Overview</h1>
+              <p class="overview-sub">Your purchase decisions at a glance</p>
+            </div>
+            <div class="overview-meta">
+              <span class="evaluated-count-badge" id="metric-total-badge">250 decisions evaluated</span>
+            </div>
+          </div>
+
+          <!-- Compact 4-Column Summary Cards -->
+          <div class="overview-grid">
+            <div class="stat-card" onclick="filterByPosition('affordable_now')">
+              <div class="stat-card-label">Affordable Now</div>
+              <div class="stat-card-val text-success" id="metric-now">--</div>
+              <div class="stat-card-sub">Immediate payment safe</div>
+            </div>
+
+            <div class="stat-card" onclick="filterByPosition('affordable_with_plan')">
+              <div class="stat-card-label">With Plan</div>
+              <div class="stat-card-val text-primary" id="metric-plan">--</div>
+              <div class="stat-card-sub">Financing / Structured</div>
+            </div>
+
+            <div class="stat-card" onclick="filterByPosition('affordable_later')">
+              <div class="stat-card-label">Later</div>
+              <div class="stat-card-val text-warning" id="metric-later">--</div>
+              <div class="stat-card-sub">Wait for payday</div>
+            </div>
+
+            <div class="stat-card" onclick="filterByPosition('not_affordable')">
+              <div class="stat-card-label">Not Affordable</div>
+              <div class="stat-card-val text-danger" id="metric-not">--</div>
+              <div class="stat-card-sub">Safety reserve limit</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Demo Scenarios Compact Grid (NO horizontal scrolling) -->
+        <section class="demo-scenarios-section" id="milestones-section">
+          <div class="demo-scenarios-header">
+            <span class="demo-scenarios-title">Demo Scenarios</span>
+            <span class="demo-scenarios-hint">Milestone reference cases from sample_requests.csv</span>
+          </div>
+          <div class="demo-scenarios-grid" id="quickbar-scenarios">
+            <!-- Injected via JavaScript as small clean buttons in a 2-row wrapped grid -->
+          </div>
+        </section>
+
+        <!-- Two-Column Workspace (Decision List on Left, Hero Decision Panel on Right) -->
+        <div class="content-workspace">
+          <!-- Left Column: Decision List -->
+          <section class="decision-list-col">
+            <div class="decision-list-card">
+              <div class="decision-list-header">
+                <div class="search-box">
+                  <svg class="search-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="search-input" class="search-field" placeholder="Search transactions or decisions..." aria-label="Search transactions or decisions" oninput="handleSearch()">
+                </div>
+
+                <div class="filter-pills-row" role="group" aria-label="Filter decisions by status">
+                  <button class="filter-pill active" onclick="setStatusFilter('ALL', this)">All</button>
+                  <button class="filter-pill" onclick="setStatusFilter('affordable_now', this)">Safe Now</button>
+                  <button class="filter-pill" onclick="setStatusFilter('affordable_with_plan', this)">With Plan</button>
+                  <button class="filter-pill" onclick="setStatusFilter('affordable_later', this)">Later</button>
+                  <button class="filter-pill" onclick="setStatusFilter('not_affordable', this)">Unsafe</button>
+                </div>
+              </div>
+
+              <!-- Transaction-Style Rows List -->
+              <div class="requests-scroll-list" id="transactions-list" role="list">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Right Column: Purchase Decision Hero Experience -->
+          <section class="decision-hero-col" id="decision-column">
+            <article class="hero-card">
+              <!-- Top Header: Item Name, Request # -->
+              <div class="hero-header">
+                <div>
+                  <div class="hero-eyebrow" id="decision-type-label">Purchase Decision</div>
+                  <h2 class="hero-item-title" id="decision-item-name">Family Transfer</h2>
+                  <div class="hero-meta" id="decision-meta-row">
+                    <span id="decision-ref-id">Request #26</span> · <span id="decision-target-date">Target: 7 Oct 2025</span>
+                  </div>
+                </div>
+
+                <div id="decision-status-container">
+                  <div class="status-badge status-now" id="decision-status-badge">
+                    <span class="status-icon">✓</span>
+                    <span class="status-label">Affordable Now</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Amount Comparison Hero Block -->
+              <div class="amount-comparison-block">
+                <div class="comparison-row">
+                  <div class="amount-col">
+                    <div class="amount-label">Requested amount</div>
+                    <div class="amount-val" id="comp-requested-amount">IDR 15,656,000</div>
+                  </div>
+                  <div class="amount-col">
+                    <div class="amount-label">Safe to pay today</div>
+                    <div class="amount-val text-success" id="comp-safe-amount">IDR 15,656,000</div>
+                  </div>
+                </div>
+
+                <!-- Subtle comparison progress bar -->
+                <div class="progress-wrap">
+                  <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="comp-progress-fill" style="width: 100%;"></div>
+                  </div>
+                  <div class="progress-caption" id="comp-progress-caption">100% safe to pay today</div>
+                </div>
+              </div>
+
+              <!-- Key Decision Terms -->
+              <div class="terms-row">
+                <div class="term-cell">
+                  <div class="term-lbl">Payment method</div>
+                  <div class="term-val" id="term-payment-method">Full Payment</div>
+                </div>
+                <div class="term-cell">
+                  <div class="term-lbl">Earliest safe completion</div>
+                  <div class="term-val" id="term-earliest-date">3 Aug 2025</div>
+                </div>
+                <div class="term-cell">
+                  <div class="term-lbl">Desired completion date</div>
+                  <div class="term-val" id="term-desired-date">7 Oct 2025</div>
+                </div>
+                <div class="term-cell">
+                  <div class="term-lbl">Partial payment</div>
+                  <div class="term-val" id="term-allows-partial">No</div>
+                </div>
+              </div>
+
+              <!-- Why This Decision Section -->
+              <div class="hero-section">
+                <div class="section-title">Why this decision?</div>
+                <div class="advisor-quote-card">
+                  <div class="advisor-sub">Based on your projected cash flow</div>
+                  <div class="advisor-text" id="detail-explanation-text">
+                    Pay IDR 15,656,000 today. This leaves at least IDR 24,768,300 available over the next 90 days.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Schedule Section -->
+              <div class="hero-section" id="section-payment-plan">
+                <div class="section-title">Payment Schedule</div>
+                <div id="payment-plan-container">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Budget Adjustments Section -->
+              <div class="hero-section" id="section-spending-changes">
+                <div class="section-title">Budget Adjustments</div>
+                <div id="spending-changes-container">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Financial Safety Section -->
+              <div class="hero-section">
+                <div class="section-title">Financial Safety</div>
+                <div class="safety-row">
+                  <div class="safety-cell">
+                    <div class="safety-cell-lbl">Starting balance</div>
+                    <div class="safety-cell-val" id="safety-starting-balance">IDR 100,845,250</div>
+                  </div>
+                  <div class="safety-cell">
+                    <div class="safety-cell-lbl">Required reserve</div>
+                    <div class="safety-cell-val" id="safety-min-balance">IDR 24,768,300</div>
+                  </div>
+                  <div class="safety-cell">
+                    <div class="safety-cell-lbl">Safety buffer</div>
+                    <div class="safety-cell-val text-success" id="safety-buffer">+IDR 76,076,950</div>
+                  </div>
+                </div>
+                <div class="safety-sub-note">
+                  Your projected balance remains above your required reserve.
+                </div>
+              </div>
+
+              <!-- Contextual Decision Assistant Section -->
+              <div class="hero-section" id="section-decision-assistant">
+                <div class="section-title">Decision Assistant</div>
+                <div class="assistant-card">
+                  <div class="assistant-header">
+                    <div class="assistant-header-content">
+                      <div class="assistant-icon-badge" aria-hidden="true">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="assistant-title">Have a question about this decision?</div>
+                        <div class="assistant-sub">Understand why this recommendation was made.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Context-Aware Preset Questions -->
+                  <div class="assistant-questions" id="assistant-questions-list" role="group" aria-label="Decision explanation questions">
+                    <!-- Injected dynamically via JS -->
+                  </div>
+
+                  <!-- Contextual Inquiry Input -->
+                  <form class="assistant-query-bar" id="assistant-query-form" onsubmit="handleAssistantSubmit(event)">
+                    <div class="assistant-input-wrap">
+                      <svg class="assistant-query-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                      <input type="text" id="assistant-query-input" class="assistant-query-input" placeholder="Ask about this decision (e.g. why, wait, plan, reserve, spending)..." aria-label="Ask about this decision">
+                    </div>
+                    <button type="submit" class="assistant-submit-btn" id="assistant-submit-btn">Ask</button>
+                  </form>
+
+                  <!-- Dynamic Explanation Display -->
+                  <div class="assistant-answer-box" id="assistant-answer-box" aria-live="polite">
+                    <div class="assistant-answer-topic-label" id="assistant-answer-topic">Explanation</div>
+                    <div class="assistant-answer-content" id="assistant-answer-text">
+                      <!-- Injected dynamically via JS -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subtle Expandable Decision Details -->
+              <details class="decision-details-dropdown">
+                <summary>Decision details</summary>
+                <div class="decision-details-grid" id="decision-raw-details">
+                  <!-- Injected via JS -->
+                </div>
+              </details>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

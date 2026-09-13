@@ -1,0 +1,372 @@
+
+==================== request_01 (user_01) ====================
+Req: Date=2024-03-03, Amt=25256, Deadline=2024-03-20, Partial=true
+Result: Safe=25256, Status=affordable_now, Method=full_payment, Earliest=2024-03-03
+Plan: 2024-03-03:25256
+Changes: none
+Explanation: Pay ZAR 25,256 today. This leaves at least ZAR 18,000 available over the next 90 days.
+Profile: Bal=58481.1, MinBal=18000, Methods=full_payment, MaxInstalMonths=
+Options: 4 options
+  Opt payment_option_01: method=full_payment, num=1, start=2024-03-03, freq=, amt=25256, fee=0, total=25256
+  Opt payment_option_02: method=installments, num=15, start=2024-03-06, freq=30, amt=1852.11, fee=2525.65, total=27781.65
+  Opt payment_option_03: method=installments, num=6, start=2024-03-10, freq=31, amt=4546.08, fee=2020.48, total=27276.48
+  Opt payment_option_04: method=installments, num=24, start=2024-03-17, freq=28, amt=1283.85, fee=5556.4, total=30812.4
+Events on/after request_date (2):
+  event_102 | 2024-03-05 | expense | transport | debit | 567.6 | pending | Pending fuel authorization
+  event_103 | 2024-03-15 | income | salary | credit | 23320 | scheduled | Next confirmed salary
+
+==================== request_02 (user_02) ====================
+Req: Date=2025-08-05, Amt=46018000, Deadline=2025-10-10, Partial=false
+Result: Safe=17229139.2, Status=affordable_with_plan, Method=installments, Earliest=2025-09-15
+Plan: 2025-08-08:15952906.67|2025-09-07:15952906.67|2025-10-07:15952906.67
+Changes: none
+Explanation: Use 3 installments of IDR 15,952,906.67, starting 8 August 2025. This leaves at least IDR 29,158,400 available.
+Profile: Bal=60383889.2, MinBal=29158400, Methods=partial_payment|installments, MaxInstalMonths=7
+Options: 3 options
+  Opt payment_option_05: method=installments, num=3, start=2025-08-08, freq=30, amt=15952906.67, fee=1840720.01, total=47858720.01
+  Opt payment_option_06: method=full_payment, num=1, start=2025-08-05, freq=, amt=46018000, fee=0, total=46018000
+  Opt payment_option_07: method=installments, num=18, start=2025-08-12, freq=31, amt=2914473.33, fee=6442519.94, total=52460519.94
+Messages (1):
+  [message_01] src=employer, ev=, txt=Rincian penggajian Anda di Cobalt Systems telah berubah. Gaji bulanan Anda naik menjadi IDR 42750000. Perubahan ini berl
+Events on/after request_date (1):
+  event_185 | 2025-08-08 | expense | shopping | debit | 1651100 | pending | Pending merchant debit
+
+==================== request_03 (user_03) ====================
+Req: Date=2019-09-03, Amt=5491000, Deadline=2019-11-15, Partial=false
+Result: Safe=873000, Status=affordable_later, Method=wait, Earliest=2019-11-15
+Plan: 2019-11-15:5491000
+Changes: none
+Explanation: Pay IDR 5,491,000 in full on 15 November 2019. Paying earlier would take the balance below the IDR 2,668,700 minimum.
+Profile: Bal=5810300, MinBal=2668700, Methods=full_payment|partial_payment|installments, MaxInstalMonths=2
+Options: 3 options
+  Opt payment_option_08: method=full_payment, num=1, start=2019-09-03, freq=, amt=5491000, fee=0, total=5491000
+  Opt payment_option_09: method=installments, num=21, start=2019-09-17, freq=28, amt=308541.9, fee=988379.9, total=6479379.9
+  Opt payment_option_10: method=installments, num=24, start=2019-09-06, freq=31, amt=279125.83, fee=1208019.92, total=6699019.92
+Messages (1):
+  [message_02] src=employer, ev=, txt=Tim payroll BrightPath Media telah mengirim pembaruan. Gaji rutin untuk penggajian berikutnya sudah dikonfirmasi. Slip g
+Events on/after request_date (1):
+  event_254 | 2019-09-07 | expense | healthcare | debit | 95000 | pending | Pending pharmacy card charge
+
+==================== request_04 (user_04) ====================
+Req: Date=2024-06-04, Amt=12693000, Deadline=2024-06-19, Partial=true
+Result: Safe=8401800, Status=affordable_later, Method=wait, Earliest=2024-06-15
+Plan: 2024-06-15:12693000
+Changes: none
+Explanation: Wait until 15 June 2024, then pay IDR 12,693,000 in full. Paying sooner would put the IDR 30,686,600 minimum at risk.
+Profile: Bal=52206950, MinBal=30686600, Methods=full_payment, MaxInstalMonths=
+Options: 2 options
+  Opt payment_option_11: method=full_payment, num=1, start=2024-06-04, freq=, amt=12693000, fee=0, total=12693000
+  Opt payment_option_12: method=installments, num=15, start=2024-06-04, freq=30, amt=875817, fee=444255, total=13137255
+Messages (1):
+  [message_03] src=employer, ev=, txt=Rincian penggajian Anda di Greenfield Foods telah berubah. Bonus kuartalan Anda masih menunggu hasil akhir penilaian kin
+Events on/after request_date (1):
+  event_357 | 2024-06-11 | expense | education | debit | 1704300 | scheduled | Scheduled school fee
+
+==================== request_05 (user_05) ====================
+Req: Date=2025-11-06, Amt=15488, Deadline=2026-01-12, Partial=false
+Result: Safe=737, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not make this payment by 12 January 2026. None of the available options keeps the ZAR 13,100 minimum protected.
+Profile: Bal=46475.1, MinBal=13100, Methods=full_payment|partial_payment|installments, MaxInstalMonths=4
+Options: 3 options
+  Opt payment_option_13: method=full_payment, num=1, start=2025-11-06, freq=, amt=15488, fee=0, total=15488
+  Opt payment_option_14: method=installments, num=18, start=2025-11-09, freq=31, amt=980.91, fee=2168.38, total=17656.38
+  Opt payment_option_15: method=installments, num=24, start=2025-11-20, freq=30, amt=787.31, fee=3407.44, total=18895.44
+Events on/after request_date (0):
+
+==================== request_06 (user_06) ====================
+Req: Date=2026-01-03, Amt=620.4, Deadline=2026-01-14, Partial=false
+Result: Safe=603.3, Status=affordable_with_plan, Method=full_payment, Earliest=2026-01-15
+Plan: 2026-01-03:620.40
+Changes: stop:event_476
+Explanation: Stop the family streaming plan, then pay EUR 620.40 today. This leaves at least EUR 800 available.
+Profile: Bal=1942.4, MinBal=800, Methods=full_payment|partial_payment, MaxInstalMonths=
+Options: 3 options
+  Opt payment_option_16: method=full_payment, num=1, start=2026-01-03, freq=, amt=620.4, fee=0, total=620.4
+  Opt payment_option_17: method=installments, num=21, start=2026-01-10, freq=28, amt=34.86, fee=111.66, total=732.06
+  Opt payment_option_18: method=installments, num=6, start=2026-01-17, freq=30, amt=111.67, fee=49.62, total=670.02
+Messages (1):
+  [message_04] src=employer, ev=, txt=Here’s the latest payroll information from Northstar Labs. Your temporary monthly pay is EUR 1037.52. The reduced amount
+Events on/after request_date (0):
+
+==================== request_07 (user_07) ====================
+Req: Date=2024-09-05, Amt=197400, Deadline=2024-11-14, Partial=true
+Result: Safe=87170.56, Status=affordable_with_plan, Method=installments, Earliest=2024-10-23
+Plan: 2024-09-12:68432|2024-10-10:68432|2024-11-07:68432
+Changes: none
+Explanation: Use 3 installments of INR 68,432, starting 12 September 2024. This leaves at least INR 93,000 available.
+Profile: Bal=218945.56, MinBal=93000, Methods=installments, MaxInstalMonths=12
+Options: 3 options
+  Opt payment_option_19: method=installments, num=3, start=2024-09-12, freq=28, amt=68432, fee=7896, total=205296
+  Opt payment_option_20: method=full_payment, num=1, start=2024-09-05, freq=, amt=197400, fee=0, total=197400
+  Opt payment_option_21: method=installments, num=15, start=2024-09-19, freq=30, amt=14476, fee=19740, total=217140
+Messages (1):
+  [message_05] src=employer, ev=, txt=BrightPath Media has updated your payroll record. Your confirmed salary is now expected on 2024-09-23. This replaces the
+Events on/after request_date (0):
+
+==================== request_08 (user_08) ====================
+Req: Date=2025-02-07, Amt=996.6, Deadline=2025-04-15, Partial=false
+Result: Safe=284.57, Status=affordable_later, Method=wait, Earliest=2025-04-15
+Plan: 2025-04-15:996.60
+Changes: none
+Explanation: Pay EUR 996.60 in full on 15 April 2025. Paying earlier would take the balance below the EUR 800 minimum.
+Profile: Bal=1536.57, MinBal=800, Methods=full_payment, MaxInstalMonths=
+Options: 2 options
+  Opt payment_option_22: method=full_payment, num=1, start=2025-02-07, freq=, amt=996.6, fee=0, total=996.6
+  Opt payment_option_23: method=installments, num=18, start=2025-02-07, freq=31, amt=63.12, fee=139.56, total=1136.16
+Messages (1):
+  [message_06] src=employer, ev=, txt=Hi, Greenfield Foods payroll here. Your next salary is reduced to EUR 1422.85. The adjustment is due to approved unpaid 
+Events on/after request_date (0):
+
+==================== request_09 (user_09) ====================
+Req: Date=2026-07-04, Amt=166.61, Deadline=2026-07-23, Partial=true
+Result: Safe=166.61, Status=affordable_now, Method=full_payment, Earliest=2026-07-04
+Plan: 2026-07-04:166.61
+Changes: none
+Explanation: Pay EUR 166.61 today. This keeps the EUR 600 minimum available over the next 90 days.
+Profile: Bal=2231.1, MinBal=600, Methods=full_payment|partial_payment|installments, MaxInstalMonths=2
+Options: 3 options
+  Opt payment_option_24: method=full_payment, num=1, start=2026-07-04, freq=, amt=166.61, fee=0, total=166.61
+  Opt payment_option_25: method=installments, num=21, start=2026-07-07, freq=28, amt=8.22, fee=6.01, total=172.62
+  Opt payment_option_26: method=installments, num=24, start=2026-07-18, freq=31, amt=7.29, fee=8.35, total=174.96
+Events on/after request_date (0):
+
+==================== request_10 (user_10) ====================
+Req: Date=2024-12-06, Amt=266700, Deadline=2025-02-10, Partial=true
+Result: Safe=12700, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not make this payment by 10 February 2025. None of the available options keeps the INR 225,400 minimum protected.
+Profile: Bal=750155, MinBal=225400, Methods=partial_payment|installments, MaxInstalMonths=6
+Options: 2 options
+  Opt payment_option_27: method=full_payment, num=1, start=2024-12-06, freq=, amt=266700, fee=0, total=266700
+  Opt payment_option_28: method=installments, num=15, start=2024-12-13, freq=30, amt=19558, fee=26670, total=293370
+Messages (1):
+  [message_07] src=service_provider, ev=, txt=Here’s the latest service update from QuickCrew. The next QuickCrew payout is still pending. The weekly earnings shown i
+Events on/after request_date (0):
+
+==================== request_11 (user_11) ====================
+Req: Date=2025-05-03, Amt=13110000, Deadline=2025-06-12, Partial=false
+Result: Safe=12510645, Status=affordable_with_plan, Method=full_payment, Earliest=2025-07-15
+Plan: 2025-05-03:13110000
+Changes: reduce_to:event_989:665950
+Explanation: Reduce the weekend food delivery to IDR 665,950, then pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available.
+Profile: Bal=63531795, MinBal=34140600, Methods=full_payment, MaxInstalMonths=
+Options: 4 options
+  Opt payment_option_29: method=full_payment, num=1, start=2025-05-03, freq=, amt=13110000, fee=0, total=13110000
+  Opt payment_option_30: method=installments, num=18, start=2025-05-17, freq=31, amt=830300, fee=1835400, total=14945400
+  Opt payment_option_31: method=installments, num=6, start=2025-05-03, freq=28, amt=2359800, fee=1048800, total=14158800
+  Opt payment_option_32: method=installments, num=24, start=2025-05-06, freq=30, amt=666425, fee=2884200, total=15994200
+Messages (1):
+  [message_08] src=employer, ev=, txt=Berikut informasi penggajian terbaru dari Greenfield Foods. Gaji pokok yang dikonfirmasi adalah IDR 38760000. Komisi dar
+Events on/after request_date (0):
+
+==================== request_12 (user_12) ====================
+Req: Date=2026-04-05, Amt=65164, Deadline=2026-06-20, Partial=false
+Result: Safe=65164, Status=affordable_with_plan, Method=installments, Earliest=2026-04-05
+Plan: 2026-04-19:22590.19|2026-05-20:22590.19|2026-06-20:22590.19
+Changes: none
+Explanation: Use 3 installments of ZAR 22,590.19, starting 19 April 2026. This leaves at least ZAR 43,200 available.
+Profile: Bal=193089.89, MinBal=43200, Methods=partial_payment|installments, MaxInstalMonths=11
+Options: 3 options
+  Opt payment_option_33: method=installments, num=3, start=2026-04-19, freq=31, amt=22590.19, fee=2606.57, total=67770.57
+  Opt payment_option_34: method=full_payment, num=1, start=2026-04-05, freq=, amt=65164, fee=0, total=65164
+  Opt payment_option_35: method=installments, num=21, start=2026-04-05, freq=28, amt=3661.6, fee=11729.6, total=76893.6
+Messages (1):
+  [message_09] src=employer, ev=, txt=A note from Cobalt Systems about your upcoming pay. The current seasonal contract has ended. No off-season income or ren
+Events on/after request_date (0):
+
+==================== request_13 (user_13) ====================
+Req: Date=2024-03-07, Amt=941.6, Deadline=2024-05-15, Partial=true
+Result: Safe=433.4, Status=affordable_later, Method=wait, Earliest=2024-05-15
+Plan: 2024-05-15:941.60
+Changes: none
+Explanation: Pay EUR 941.60 in full on 15 May 2024. Paying earlier would take the balance below the EUR 1,300 minimum.
+Profile: Bal=2789.52, MinBal=1300, Methods=full_payment, MaxInstalMonths=
+Options: 3 options
+  Opt payment_option_36: method=full_payment, num=1, start=2024-03-07, freq=, amt=941.6, fee=0, total=941.6
+  Opt payment_option_37: method=installments, num=15, start=2024-03-10, freq=30, amt=69.05, fee=94.15, total=1035.75
+  Opt payment_option_38: method=installments, num=24, start=2024-03-21, freq=28, amt=47.86, fee=207.04, total=1148.64
+Events on/after request_date (1):
+  event_1161 | 2024-03-15 | income | salary | credit | 1343.54 | scheduled | Next confirmed salary
+
+==================== request_14 (user_14) ====================
+Req: Date=2025-08-04, Amt=5414.2, Deadline=2025-10-04, Partial=true
+Result: Safe=597.74, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not proceed with the EUR 5,414.20 request. Although EUR 597.74 is available today, the full amount cannot be completed safely within 90 days.
+Profile: Bal=3931.74, MinBal=2200, Methods=partial_payment, MaxInstalMonths=
+Options: 2 options
+  Opt payment_option_39: method=full_payment, num=1, start=2025-08-04, freq=, amt=5414.2, fee=0, total=5414.2
+  Opt payment_option_40: method=installments, num=18, start=2025-08-11, freq=31, amt=342.9, fee=758, total=6172.2
+Messages (1):
+  [message_10] src=employer, ev=, txt=Here’s the latest payroll information from HarborWorks. Regular salary of EUR 2717 resumes on 2025-08-15. A new recurrin
+Events on/after request_date (0):
+
+==================== request_15 (user_15) ====================
+Req: Date=2026-01-06, Amt=3685, Deadline=2026-02-01, Partial=false
+Result: Safe=83.05, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not make this payment by 1 February 2026. None of the available options keeps the EUR 1,200 minimum protected.
+Profile: Bal=1770.05, MinBal=1200, Methods=partial_payment, MaxInstalMonths=
+Options: 3 options
+  Opt payment_option_41: method=full_payment, num=1, start=2026-01-06, freq=, amt=3685, fee=0, total=3685
+  Opt payment_option_42: method=installments, num=21, start=2026-01-20, freq=28, amt=207.06, fee=663.26, total=4348.26
+  Opt payment_option_43: method=installments, num=24, start=2026-01-09, freq=31, amt=187.32, fee=810.68, total=4495.68
+Messages (1):
+  [message_11] src=employer, ev=, txt=A quick update from the payroll team at Riverline Retail. Your first salary will be EUR 1661. The confirmed credit date 
+Events on/after request_date (0):
+
+==================== request_16 (user_16) ====================
+Req: Date=2023-08-12, Amt=122500, Deadline=2023-10-11, Partial=true
+Result: Safe=122500, Status=affordable_now, Method=full_payment, Earliest=2023-08-12
+Plan: 2023-08-12:122500
+Changes: none
+Explanation: Pay INR 122,500 today. This leaves at least INR 122,400 available over the next 90 days.
+Profile: Bal=362370, MinBal=122400, Methods=full_payment|installments, MaxInstalMonths=2
+Options: 3 options
+  Opt payment_option_44: method=full_payment, num=1, start=2023-08-12, freq=, amt=122500, fee=0, total=122500
+  Opt payment_option_45: method=installments, num=15, start=2023-08-12, freq=30, amt=8983.33, fee=12249.95, total=134749.95
+  Opt payment_option_46: method=installments, num=6, start=2023-08-15, freq=31, amt=22050, fee=9800, total=132300
+Messages (1):
+  [message_12] src=service_provider, ev=, txt=StayLedger wanted to let you know about a change on your account. The renewed lease increases monthly rent by 12%. The n
+Events on/after request_date (1):
+  event_1442 | 2023-08-16 | expense | rent | debit |  | scheduled | Outstanding rent balance
+
+==================== request_17 (user_17) ====================
+Req: Date=2026-03-01, Amt=274600, Deadline=2026-05-04, Partial=false
+Result: Safe=243849.58, Status=affordable_with_plan, Method=installments, Earliest=2026-03-15
+Plan: 2026-03-01:95194.67|2026-03-31:95194.67|2026-04-30:95194.67
+Changes: none
+Explanation: Use 3 installments of INR 95,194.67, starting 1 March 2026. This leaves at least INR 166,100 available.
+Profile: Bal=550379.58, MinBal=166100, Methods=installments, MaxInstalMonths=3
+Options: 3 options
+  Opt payment_option_47: method=installments, num=3, start=2026-03-01, freq=30, amt=95194.67, fee=10984.01, total=285584.01
+  Opt payment_option_48: method=full_payment, num=1, start=2026-03-01, freq=, amt=274600, fee=0, total=274600
+  Opt payment_option_49: method=installments, num=18, start=2026-03-04, freq=31, amt=17391.33, fee=38443.94, total=313043.94
+Events on/after request_date (1):
+  event_1546 | 2026-03-15 | income | salary | credit | 206000 | scheduled | Next confirmed salary
+
+==================== request_18 (user_18) ====================
+Req: Date=2026-07-07, Amt=3246.1, Deadline=2026-09-15, Partial=false
+Result: Safe=462, Status=affordable_later, Method=wait, Earliest=2026-09-15
+Plan: 2026-09-15:3246.10
+Changes: none
+Explanation: Pay EUR 3,246.10 in full on 15 September 2026. Paying earlier would take the balance below the EUR 1,400 minimum.
+Profile: Bal=2486, MinBal=1400, Methods=full_payment|partial_payment, MaxInstalMonths=
+Options: 2 options
+  Opt payment_option_50: method=full_payment, num=1, start=2026-07-07, freq=, amt=3246.1, fee=0, total=3246.1
+  Opt payment_option_51: method=installments, num=21, start=2026-07-14, freq=28, amt=182.4, fee=584.3, total=3830.4
+Messages (1):
+  [message_13] src=bank, ev=, txt=There’s an update from Summit Bank on your recent account activity. The matching debit and credit came from a transfer b
+Events on/after request_date (0):
+
+==================== request_19 (user_19) ====================
+Req: Date=2024-09-04, Amt=39660, Deadline=2024-10-04, Partial=true
+Result: Safe=28820, Status=affordable_with_plan, Method=partial_payment, Earliest=2024-09-15
+Plan: 2024-09-04:28820|2024-09-15:10840
+Changes: none
+Explanation: Pay INR 28,820 today and the remaining INR 10,840 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.
+Profile: Bal=199545, MinBal=92800, Methods=partial_payment|installments, MaxInstalMonths=2
+Options: 3 options
+  Opt payment_option_52: method=full_payment, num=1, start=2024-09-04, freq=, amt=39660, fee=0, total=39660
+  Opt payment_option_53: method=installments, num=2, start=2024-09-04, freq=28, amt=20623.2, fee=1586.4, total=41246.4
+  Opt payment_option_54: method=installments, num=3, start=2024-09-10, freq=31, amt=14013.2, fee=2379.6, total=42039.6
+Events on/after request_date (0):
+
+==================== request_20 (user_20) ====================
+Req: Date=2026-02-07, Amt=303700, Deadline=2026-02-22, Partial=false
+Result: Safe=5400, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not make this payment by 22 February 2026. None of the available options keeps the INR 64,500 minimum protected.
+Profile: Bal=102609.05, MinBal=64500, Methods=full_payment|partial_payment|installments, MaxInstalMonths=11
+Options: 2 options
+  Opt payment_option_55: method=full_payment, num=1, start=2026-02-07, freq=, amt=303700, fee=0, total=303700
+  Opt payment_option_56: method=installments, num=18, start=2026-02-07, freq=31, amt=19234.33, fee=42517.94, total=346217.94
+Messages (1):
+  [message_14] src=merchant, ev=event_1785, txt=CartLane has new information about your payment or refund. Your refund has been initiated but has not reached your accou
+Events on/after request_date (3):
+  event_1787 | 2026-02-08 | expense | shopping | debit | 4470 | pending | Pending online order charge
+  event_1786 | 2026-02-09 | expense | utilities | debit |  | pending | Outstanding telecom bill
+  event_1785 | 2026-02-14 | refund | shopping | credit | 8640 | pending | Pending merchant refund
+
+==================== request_21 (user_21) ====================
+Req: Date=2026-04-03, Amt=1574.4, Deadline=2026-04-14, Partial=false
+Result: Safe=1543.35, Status=affordable_with_plan, Method=full_payment, Earliest=2026-04-15
+Plan: 2026-04-03:1574.40
+Changes: stop:event_1815|reduce_to:event_1816:23.50
+Explanation: Stop the online backup subscription and reduce the streaming subscription to USD 23.50, then pay USD 1,574.40 today. This leaves at least USD 1,800 available.
+Profile: Bal=3911.35, MinBal=1800, Methods=full_payment, MaxInstalMonths=
+Options: 4 options
+  Opt payment_option_57: method=full_payment, num=1, start=2026-04-03, freq=, amt=1574.4, fee=0, total=1574.4
+  Opt payment_option_58: method=installments, num=21, start=2026-04-06, freq=28, amt=88.47, fee=283.47, total=1857.87
+  Opt payment_option_59: method=installments, num=6, start=2026-04-10, freq=30, amt=283.39, fee=125.94, total=1700.34
+  Opt payment_option_60: method=installments, num=24, start=2026-04-17, freq=31, amt=80.03, fee=346.32, total=1920.72
+Events on/after request_date (2):
+  event_1857 | 2026-04-05 | expense | transport | debit | 53 | pending | Pending fuel authorization
+  event_1858 | 2026-04-15 | income | salary | credit | 2256 | scheduled | Next confirmed salary
+
+==================== request_22 (user_22) ====================
+Req: Date=2024-12-05, Amt=731.5, Deadline=2025-02-10, Partial=true
+Result: Safe=475.46, Status=affordable_with_plan, Method=installments, Earliest=2025-01-15
+Plan: 2024-12-08:253.59|2025-01-05:253.59|2025-02-02:253.59
+Changes: none
+Explanation: Use 3 installments of EUR 253.59, starting 8 December 2024. This leaves at least EUR 500 available.
+Profile: Bal=1132.46, MinBal=500, Methods=installments, MaxInstalMonths=6
+Options: 3 options
+  Opt payment_option_61: method=installments, num=3, start=2024-12-08, freq=28, amt=253.59, fee=29.27, total=760.77
+  Opt payment_option_62: method=full_payment, num=1, start=2024-12-05, freq=, amt=731.5, fee=0, total=731.5
+  Opt payment_option_63: method=installments, num=15, start=2024-12-12, freq=30, amt=53.64, fee=73.1, total=804.6
+Messages (1):
+  [message_15] src=financial_service, ev=event_1960, txt=Here’s the latest account information from ClearFund. Your portfolio’s displayed market value has increased substantiall
+Events on/after request_date (1):
+  event_1961 | 2024-12-08 | expense | shopping | debit | 43 | pending | Pending merchant debit
+
+==================== request_23 (user_23) ====================
+Req: Date=2025-05-07, Amt=38016, Deadline=2025-07-15, Partial=false
+Result: Safe=9152, Status=affordable_later, Method=wait, Earliest=2025-07-15
+Plan: 2025-07-15:38016
+Changes: none
+Explanation: Pay ZAR 38,016 in full on 15 July 2025. Paying earlier would take the balance below the ZAR 27,000 minimum.
+Profile: Bal=51957.9, MinBal=27000, Methods=full_payment|partial_payment|installments, MaxInstalMonths=12
+Options: 3 options
+  Opt payment_option_64: method=full_payment, num=1, start=2025-05-07, freq=, amt=38016, fee=0, total=38016
+  Opt payment_option_65: method=installments, num=18, start=2025-05-21, freq=31, amt=2407.68, fee=5322.24, total=43338.24
+  Opt payment_option_66: method=installments, num=24, start=2025-05-10, freq=30, amt=1932.48, fee=8363.52, total=46379.52
+Messages (1):
+  [message_16] src=financial_service, ev=, txt=Here’s the latest account information from DrawPay. Your prize claim has been verified and is still in payment processin
+Events on/after request_date (1):
+  event_2042 | 2025-05-11 | expense | healthcare | debit | 1553.2 | pending | Pending pharmacy card charge
+
+==================== request_24 (user_24) ====================
+Req: Date=2026-01-04, Amt=109600, Deadline=2026-02-08, Partial=true
+Result: Safe=13420, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not proceed with the INR 109,600 request. Although INR 13,420 is available today, the full amount cannot be completed safely within 90 days.
+Profile: Bal=85045, MinBal=51000, Methods=partial_payment, MaxInstalMonths=
+Options: 2 options
+  Opt payment_option_67: method=full_payment, num=1, start=2026-01-04, freq=, amt=109600, fee=0, total=109600
+  Opt payment_option_68: method=installments, num=21, start=2026-01-04, freq=28, amt=6158.48, fee=19728.08, total=129328.08
+Messages (1):
+  [message_17] src=financial_service, ev=event_2165, txt=Here’s the latest account information from PrizeTrack. The prize proceeds have reached your account after withholding. T
+Events on/after request_date (1):
+  event_2166 | 2026-01-11 | expense | insurance | debit | 1830 | scheduled | Scheduled insurance payment
+
+==================== request_25 (user_25) ====================
+Req: Date=2024-03-06, Amt=60496000, Deadline=2024-04-17, Partial=true
+Result: Safe=1425000, Status=not_affordable, Method=not_recommended, Earliest=
+Plan: none
+Changes: none
+Explanation: Do not make this payment by 17 April 2024. None of the available options keeps the IDR 23,379,100 minimum protected.
+Profile: Bal=32063050, MinBal=23379100, Methods=full_payment|installments, MaxInstalMonths=3
+Options: 3 options
+  Opt payment_option_69: method=full_payment, num=1, start=2024-03-06, freq=, amt=60496000, fee=0, total=60496000
+  Opt payment_option_70: method=installments, num=15, start=2024-03-09, freq=30, amt=4436373.33, fee=6049599.95, total=66545599.95
+  Opt payment_option_71: method=installments, num=24, start=2024-03-20, freq=28, amt=3075213.33, fee=13309119.92, total=73805119.92
+Events on/after request_date (1):
+  event_2288 | 2024-03-15 | income | salary | credit | 1800 | scheduled | Next confirmed salary

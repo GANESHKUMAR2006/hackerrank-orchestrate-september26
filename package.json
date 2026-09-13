@@ -1,0 +1,9 @@
+{
+  "name": "buy-or-wait-ui",
+  "version": "1.0.0",
+  "description": "Buy or Wait? Financial Decision Engine Demo UI",
+  "scripts": {
+    "start": "python code/ui/server.py",
+    "dev": "python code/ui/server.py"
+  }
+}
